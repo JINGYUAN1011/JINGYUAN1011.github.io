@@ -95,7 +95,7 @@ var width=1100 - margin.left - margin.right
     .enter().append("path")
     .attr("d", d => buildArc(d))
      .style("fill", "none")
-     .attr("stroke", "darkgrey")
+     .attr("stroke", "lightgrey")
      .attr('stroke-opacity',0.9)
   .attr('stroke-width',0.5)
 
@@ -115,16 +115,16 @@ var width=1100 - margin.left - margin.right
        // notice how embedding the reference to arcs within nodes.on() allows the code to connect d to arcd
        // this code iterates through all the arcs so we can compare each to the selected node d
        .style('stroke', function (arcd) { 
-          return  arcd.source === d.id || arcd.target === d.id ? '#626363' : 'lightgrey';})
+          return  arcd.source === d.id || arcd.target === d.id ? '#626363' : '#ededed';})
        .style('stroke-width', function (arcd) {
           return arcd.source === d.id || arcd.target === d.id ? 1.3 : 0.5;})  
        .style('stroke-opacity',function(arcd){return arcd.source === d.id || arcd.target === d.id ? 0.7 : 0.3;})
      rects
      .style('fill', function (rec) { 
-          return  rec.id === d.id ? '#626363' : 'lightgrey';})
+          return  rec.id === d.id ? '#626363' : '#ededed';})
      nodes
      .style('fill', function (l) { 
-          return  l.id === d.id ? '#626363' : 'lightgrey';})
+          return  l.id === d.id ? '#626363' : '#ededed';})
      .style("r", function (l) { 
           return  l.id === d.id ? '8' : 'radius';})
      barlabels
@@ -136,7 +136,7 @@ var width=1100 - margin.left - margin.right
    // remove highlighting when user mouse moves out of node by restoring default colors and thickness
    labels.on('mouseout', function (d) {   
      nodes.style("fill", d => d3.lab(color(d.group)));
-     arcs.style('stroke', 'darkgrey');
+     arcs.style('stroke', 'lightgrey');
      arcs.style('stroke-width', 0.5);
      arcs.style('stroke-opacity', 0.9);
      rects.style("fill", d => d3.lab(color(d.group)));
